@@ -1,14 +1,22 @@
 import { Router } from "express";
+import { BooksController } from "../controllers/books.controllers";
+import { BooksMiddlewares } from "../middlewares/books.middlewares";
 
 export const booksRouter = Router();
 
-booksRouter.post("/", )
+const booksControllers = new BooksController();
 
-booksRouter.get("/", )
+const booksMiddlewares = new BooksMiddlewares();
 
-booksRouter.get("/:id", )
+booksRouter.post("/", booksMiddlewares.isBookNameExistent,  booksControllers.createProduct );
 
-booksRouter.patch("/:id", )
+booksRouter.get("/", booksControllers.getProducts );
 
-booksRouter.delete("/:id", )
+booksRouter.use("/:id", booksMiddlewares.isBookIdValid)
+
+booksRouter.get("/:id", booksControllers.retrieveProduct )
+
+booksRouter.patch("/:id", booksMiddlewares.isBookNameExistent, booksControllers.updateProduct )
+
+booksRouter.delete("/:id", booksControllers.deleteProduct )
 

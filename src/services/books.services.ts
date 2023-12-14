@@ -6,10 +6,9 @@ export class ProductServices {
         return booksDatabase;
     }
 
-    getOneProduct(id: string){
-        const findProduct = booksDatabase.find(product => product.id === Number(id));
+    getOneProduct(index: number){
 
-        return findProduct;
+        return booksDatabase[index];
     }
 
     createProduct(data: CreateProduct){
@@ -25,8 +24,7 @@ export class ProductServices {
         return newProduct;
     }
 
-    updateProduct(id: string, data: UpdateProduct ): IProduct {
-        const index = booksDatabase.findIndex(product => product.id === Number(id));
+    updateProduct(index: number, data: UpdateProduct ): IProduct {
 
         booksDatabase[index] = {
             ...booksDatabase[index],
@@ -36,8 +34,7 @@ export class ProductServices {
         return booksDatabase[index];
     }
 
-    deleteProduct(id: string): void{
-        const index = booksDatabase.findIndex(product => product.id === Number(id));
+    deleteProduct(index: number): void{
 
             booksDatabase.splice(index, 1)
     }
