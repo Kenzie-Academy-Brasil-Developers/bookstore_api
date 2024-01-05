@@ -1,6 +1,6 @@
-import { IProduct } from "../interfaces/books.interfaces";
+import { Book } from "../interfaces/books.interfaces";
 
-export const booksDatabase: IProduct[] = [];
+export const booksDatabase: Book[] = [];
 
 let id = 0;
 

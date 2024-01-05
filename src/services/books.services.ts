@@ -1,5 +1,5 @@
 import { booksDatabase, generateId } from "../database/database";
-import { CreateProduct, IProduct, UpdateProduct } from "../interfaces/books.interfaces";
+import { CreateBook, Book, UpdateBook } from "../interfaces/books.interfaces";
 
 export class ProductServices {
     getProducts(){
@@ -11,8 +11,8 @@ export class ProductServices {
         return booksDatabase[index];
     }
 
-    createProduct(data: CreateProduct){
-        const newProduct: IProduct = {
+    createProduct(data: CreateBook){
+        const newProduct: Book = {
             id:generateId(),
             ...data,
             createdAt: new Date(),
@@ -24,7 +24,7 @@ export class ProductServices {
         return newProduct;
     }
 
-    updateProduct(index: number, data: UpdateProduct ): IProduct {
+    updateProduct(index: number, data: UpdateBook ): Book {
 
         booksDatabase[index] = {
             ...booksDatabase[index],
