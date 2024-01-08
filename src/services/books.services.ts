@@ -2,7 +2,14 @@ import { booksDatabase, generateId } from "../database/database";
 import { CreateBook, Book, UpdateBook } from "../interfaces/books.interfaces";
 
 export class ProductServices {
-    getProducts(){
+    getProducts(search?: string | undefined): Book[] {
+
+        if(search){
+            const searchedBook = booksDatabase.filter((book) => book.name.toLowerCase().includes(search.toLowerCase()))
+            
+            return searchedBook;
+        }
+
         return booksDatabase;
     }
 

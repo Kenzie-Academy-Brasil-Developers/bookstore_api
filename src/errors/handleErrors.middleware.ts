@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { AppError } from "./errors";
-import { AnyZodObject, ZodError } from "zod";
+import {  ZodError } from "zod";
 import { RequestSchema } from "../interfaces/books.interfaces";
 
 
@@ -28,7 +28,7 @@ export class HandleErrors {
                 req.body = await schemas.body.parseAsync(req.body);
             }
 
-            if(schemas.query) {
+            if(schemas.query) { 
                 req.query = await schemas.query.parseAsync(req.query);
             }
 

@@ -11,8 +11,12 @@ export class BooksController {
         return res.status(201).json(newProduct);
     };
 
-    getProducts = (req: Request, res: Response ): Response => {
-        return res.status(200).json(booksDatabase);
+    getProducts = (req: Request, res: Response): Response => {
+    
+        const desiredBook = this.productService.getProducts(req.query.search as string);
+
+        return res.status(200).json(desiredBook);
+
     }
 
     retrieveProduct = (req: Request, res: Response): Response => {

@@ -1,16 +1,4 @@
 import { z } from "zod";
-// interface IProduct{
-//     id: number,
-//     name: string, 
-//     pages: number,
-//     category?: string,
-//     createdAt: Date,
-//     updatedAt: Date
-// }
-
-// type CreateProduct = Pick<IProduct, "name" | "pages" | "category">;
-
-// type UpdateProduct = Partial<CreateProduct>;
 
 const bookSchema = z.object({
     id: z.number(),
@@ -27,7 +15,10 @@ const createBookSchema = bookSchema.pick({
     category: true,
 })
 
+const querySchema = bookSchema.partial();
+
+
 const updateBookSchema = createBookSchema.partial();
 
 
-export { bookSchema, createBookSchema, updateBookSchema};
+export { bookSchema, createBookSchema, updateBookSchema, querySchema};

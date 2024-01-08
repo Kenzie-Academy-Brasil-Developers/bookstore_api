@@ -37,7 +37,7 @@ describe("get books", () => {
       .then((response) => response.body);
 
     expect(data).toHaveLength(1);
-
+  
     bookDefaultExpects(data[0]);
 
     expect(data[0].category).toBeDefined();

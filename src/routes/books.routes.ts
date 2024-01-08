@@ -2,7 +2,7 @@ import { Router } from "express";
 import { BooksController } from "../controllers/books.controllers";
 import { BooksMiddlewares } from "../middlewares/books.middlewares";
 import { HandleErrors } from "../errors/handleErrors.middleware";
-import { createBookSchema, updateBookSchema } from "../schemas/books.schemas";
+import { createBookSchema, querySchema, updateBookSchema } from "../schemas/books.schemas";
 
 export const booksRouter = Router();
 
@@ -18,7 +18,7 @@ booksRouter.get("/", booksControllers.getProducts );
 
 booksRouter.use("/:id", booksMiddlewares.isBookIdValid)
 
-booksRouter.get("/:id", booksControllers.retrieveProduct )
+booksRouter.get("/:id", booksControllers.retrieveProduct)
 
 booksRouter.patch("/:id", handleErrors.validateBody({ body: updateBookSchema}), booksMiddlewares.isBookNameExistent, booksControllers.updateProduct )
 
